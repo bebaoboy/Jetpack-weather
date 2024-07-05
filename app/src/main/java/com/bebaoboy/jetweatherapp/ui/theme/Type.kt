@@ -1,4 +1,4 @@
-package com.example.jetweatherapp.ui.theme
+package com.bebaoboy.jetweatherapp.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

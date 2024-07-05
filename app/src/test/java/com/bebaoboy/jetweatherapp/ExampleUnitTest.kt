@@ -1,8 +1,7 @@
-package com.example.jetweatherapp
-
-import org.junit.Test
+package com.bebaoboy.jetweatherapp
 
 import org.junit.Assert.*
+import org.junit.Test
 
 /**
  * Example local unit test, which will execute on the development machine (host).

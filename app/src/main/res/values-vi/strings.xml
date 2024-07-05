@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Thời Tiết Jet</string>
+    <string name="tab_home">Trang chủ</string>
+    <string name="tab_daily">Hằng ngày</string>
+</resources>
