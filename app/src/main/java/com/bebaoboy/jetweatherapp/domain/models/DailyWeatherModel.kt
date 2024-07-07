@@ -2,15 +2,15 @@ package com.bebaoboy.jetweatherapp.domain.models
 
 import com.bebaoboy.jetweatherapp.utils.WeatherInfo
 
-data class DailyWeather(
-    private val time: List<Int>,
+data class DailyWeatherModel(
+    private val time: List<String>,
     private val temperature2mMax: List<Double>,
     private val temperature2mMin: List<Double>,
     private val uvIndexMax: List<Double>,
-    private val windDirection10mDominant: List<Int>,
+    private val windDirection10mDominant: List<String>,
     private val windSpeed10mMax: List<Double>,
-    private val sunrise: List<Int>,
-    private val sunset: List<Int>,
+    private val sunrise: List<String>,
+    private val sunset: List<String>,
     private val weatherInfo: List<WeatherInfo>,
 ) {
     val dailyWeatherInfo: List<DailyWeatherInfo>
@@ -27,16 +27,16 @@ data class DailyWeather(
                 time = time[i]
             )
         }
-
+    
     data class DailyWeatherInfo(
-        val time: Int,
+        val time: String,
         val temperature2mMax: Double,
         val temperature2mMin: Double,
         val uvIndexMax: Double,
-        val windDirection10mDominant: Int,
+        val windDirection10mDominant: String,
         val windSpeed10mMax: Double,
-        val sunrise: Int,
-        val sunset: Int,
+        val sunrise: String,
+        val sunset: String,
         val weatherInfoItem: WeatherInfo,
     )
 }

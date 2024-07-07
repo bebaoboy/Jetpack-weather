@@ -5,7 +5,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Daily(
+data class ApiDailyWeatherModel(
     @SerialName("sunrise")
     val sunrise: List<Int> = listOf(),
     @SerialName("sunset")
@@ -15,7 +15,7 @@ data class Daily(
     @SerialName("temperature_2m_min")
     val temperature2mMin: List<Double> = listOf(),
     @SerialName("time")
-    val time: List<Int> = listOf(),
+    val time: List<Long> = listOf(),
     @SerialName("uv_index_max")
     val uvIndexMax: List<Double> = listOf(),
     @SerialName("weather_code")

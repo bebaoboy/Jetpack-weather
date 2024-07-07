@@ -8,9 +8,9 @@ object K {
 object ApiParams {
     const val LATITUDE = "latitude"
     const val LONGITUDE = "longitude"
-    const val DAILY = "daily"
-    const val CURRENT_WEATHER = "current"
-    const val HOURLY = "hourly"
+    const val DAILY = "apiDailyWeatherModel"
+    const val CURRENT_WEATHER = "apiCurrentWeatherModel"
+    const val HOURLY = "apiHourlyWeatherModel"
     const val TIME_FORMAT = "timeformat"
     const val TIMEZONE = "timezone"
 }

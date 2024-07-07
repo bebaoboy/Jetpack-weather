@@ -5,21 +5,21 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class WeatherApi(
-    @SerialName("current")
-    val current: Current = Current(),
+data class ApiWeatherModel(
+    @SerialName("apiCurrentWeatherModel")
+    val apiCurrentWeatherModel: ApiCurrentWeatherModel = ApiCurrentWeatherModel(),
     @SerialName("current_units")
     val currentUnits: CurrentUnits = CurrentUnits(),
-    @SerialName("daily")
-    val daily: Daily = Daily(),
+    @SerialName("apiDailyWeatherModel")
+    val apiDailyWeatherModel: ApiDailyWeatherModel = ApiDailyWeatherModel(),
     @SerialName("daily_units")
     val dailyUnits: DailyUnits = DailyUnits(),
     @SerialName("elevation")
     val elevation: Double = 0.0, // 38.0
     @SerialName("generationtime_ms")
     val generationtimeMs: Double = 0.0, // 0.2599954605102539
-    @SerialName("hourly")
-    val hourly: Hourly = Hourly(),
+    @SerialName("apiHourlyWeatherModel")
+    val apiHourlyWeatherModel: ApiHourlyWeatherModel = ApiHourlyWeatherModel(),
     @SerialName("hourly_units")
     val hourlyUnits: HourlyUnits = HourlyUnits(),
     @SerialName("latitude")

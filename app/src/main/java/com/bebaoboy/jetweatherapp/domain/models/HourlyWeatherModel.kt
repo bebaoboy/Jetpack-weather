@@ -2,8 +2,8 @@ package com.bebaoboy.jetweatherapp.domain.models
 
 import com.bebaoboy.jetweatherapp.utils.WeatherInfo
 
-data class HourlyWeather(
-    private val time: List<Int>,
+data class HourlyWeatherModel(
+    private val time: List<String>,
     private val temperature2m: List<Double>,
     private val weatherInfo: List<WeatherInfo>,
 ) {
@@ -15,9 +15,9 @@ data class HourlyWeather(
                 weatherInfo[i]
             )
         }
-
+    
     data class HourlyWeatherInfo(
-        val time: Int,
+        val time: String,
         val temperature2m: Double,
         val weatherInfo: WeatherInfo,
     )
