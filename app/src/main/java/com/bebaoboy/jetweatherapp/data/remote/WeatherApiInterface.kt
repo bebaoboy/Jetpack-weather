@@ -12,8 +12,8 @@ import retrofit2.http.Query
 interface WeatherApiInterface {
     @GET(K.END_POINT)
     suspend fun getWeather(
-        @Query(ApiParams.LATITUDE) latitude: Double,
-        @Query(ApiParams.LONGITUDE) longitude: Double,
+        @Query(ApiParams.LATITUDE) latitude: Double = 0.0,
+        @Query(ApiParams.LONGITUDE) longitude: Double = 0.0,
         @Query(ApiParams.DAILY) apiDailyWeatherModel: List<String> =
             ApiDailyWeatherModel::class.java.declaredFields.map { it -> it.name },
         @Query(ApiParams.CURRENT_WEATHER) apiCurrentWeatherWeatherModel: List<String> =

@@ -9,12 +9,15 @@ import com.bebaoboy.jetweatherapp.domain.models.CurrentWeatherModel
 import com.bebaoboy.jetweatherapp.domain.models.DailyWeatherModel
 import com.bebaoboy.jetweatherapp.domain.models.HourlyWeatherModel
 import com.bebaoboy.jetweatherapp.domain.models.WeatherModel
+import com.bebaoboy.jetweatherapp.utils.ApiCurrentWeatherMapperAnnotation
+import com.bebaoboy.jetweatherapp.utils.ApiDailyMapperAnnotation
+import com.bebaoboy.jetweatherapp.utils.ApiHourlyMapperAnnotation
 import javax.inject.Inject
 
 class ApiWeatherMapper @Inject constructor(
-    private val appDailyMapper: ApiMapper<DailyWeatherModel, ApiDailyWeatherModel>,
-    private val appHourlyMapper: ApiMapper<HourlyWeatherModel, ApiHourlyWeatherModel>,
-    private val appCurrentWeatherMapper: ApiMapper<CurrentWeatherModel, ApiCurrentWeatherModel>
+    @ApiDailyMapperAnnotation private val appDailyMapper: ApiMapper<DailyWeatherModel, ApiDailyWeatherModel>,
+    @ApiHourlyMapperAnnotation private val appHourlyMapper: ApiMapper<HourlyWeatherModel, ApiHourlyWeatherModel>,
+    @ApiCurrentWeatherMapperAnnotation private val appCurrentWeatherMapper: ApiMapper<CurrentWeatherModel, ApiCurrentWeatherModel>
 ) : ApiMapper<WeatherModel, ApiWeatherModel> {
     override fun mapToDomain(entity: ApiWeatherModel): WeatherModel {
         return WeatherModel(
