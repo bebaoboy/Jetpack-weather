@@ -12,11 +12,7 @@ class ApiCurrentWeatherMapper : ApiMapper<CurrentWeatherModel, ApiCurrentWeather
             weatherInfo = Util.getWeatherInfo(entity.weatherCode),
             windDirection = Util.getWindDirection(entity.windDirection10m.toDouble()),
             windSpeed = entity.windSpeed10m,
-            time = Util.formatNormalDate(
-                "MMMM, dd",
-                entity.time.toLong(),
-                unix = true
-            ),
+            time = entity.time.toLong(),
             isDay = entity.isDay == 1
         
         )

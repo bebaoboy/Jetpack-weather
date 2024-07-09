@@ -12,17 +12,17 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun HomeScreen(
     modifier: Modifier = Modifier,
-    homeViewModel: HomeViewModel
+    homeViewModelState: HomeState
 ) {
     Box(
         modifier = modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        if (homeViewModel.homeState.isLoading) {
+        if (homeViewModelState.isLoading) {
             CircularProgressIndicator()
         } else {
-            homeViewModel.homeState.weather?.let {
+            homeViewModelState.weather?.let {
                 CurrentWeatherItem(
                     currentWeatherModel = it.currentWeatherModel,
                     modifier = Modifier.align(Alignment.TopCenter)
@@ -33,7 +33,7 @@ fun HomeScreen(
                         .align(Alignment.BottomCenter)
                 )
             }
-            homeViewModel.homeState.dailyWeatherInfo?.let {
+            homeViewModelState.dailyWeatherInfo?.let {
                 DailyWeatherItem(
                     modifier = modifier.align(Alignment.Center),
                     dailyWeatherModel = it

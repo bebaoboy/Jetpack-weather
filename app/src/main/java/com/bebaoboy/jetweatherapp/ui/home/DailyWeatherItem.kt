@@ -12,7 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bebaoboy.jetweatherapp.R
@@ -56,7 +56,7 @@ fun SunRiseItem(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = LocalContext.current.getString(R.string.sunrise),
+                text = stringResource(R.string.sunrise),
                 style = MaterialTheme.typography.headlineSmall
             )
             Text(
@@ -64,7 +64,7 @@ fun SunRiseItem(
                 style = MaterialTheme.typography.displayMedium
             )
             Text(
-                text = "${LocalContext.current.getString(R.string.sunset)} ${dailyWeatherModel.sunset}",
+                text = "${stringResource(R.string.sunset)} ${dailyWeatherModel.sunset}",
                 style = MaterialTheme.typography.headlineSmall
             )
             
@@ -86,7 +86,7 @@ fun UVIndexItem(
         ) {
             Text(
                 
-                text = LocalContext.current.getString(R.string.uv_index),
+                text = stringResource(R.string.uv_index),
                 style = MaterialTheme.typography.headlineSmall
             )
             Text(

@@ -7,6 +7,6 @@ data class CurrentWeatherModel(
     val windSpeed: Double,
     val windDirection: String,
     val isDay: Boolean,
-    val time: String,
+    val time: Long,
     val weatherInfo: WeatherInfo,
 )

@@ -17,8 +17,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bebaoboy.jetweatherapp.R
@@ -29,7 +29,9 @@ import java.util.Date
 @Composable
 fun HourlyWeatherItem(modifier: Modifier = Modifier, hourlyWeatherModel: HourlyWeatherModel) {
     Card(
-        modifier = modifier.fillMaxWidth().padding(bottom = 20.dp)
+        modifier = modifier
+            .fillMaxWidth()
+            .padding(bottom = 20.dp)
     ) {
         Row(
             modifier = modifier
@@ -37,7 +39,7 @@ fun HourlyWeatherItem(modifier: Modifier = Modifier, hourlyWeatherModel: HourlyW
                 .padding(16.dp), horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
-                text = LocalContext.current.getString(R.string.today),
+                text = stringResource(R.string.today),
                 style = MaterialTheme.typography.bodyMedium
             )
             Text(

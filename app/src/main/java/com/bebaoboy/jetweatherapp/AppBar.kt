@@ -1,3 +1,4 @@
+import android.widget.TextClock
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
@@ -7,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.rounded.Search
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -22,10 +24,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.bebaoboy.jetweatherapp.ui.home.HomeScreen
-import com.bebaoboy.jetweatherapp.ui.home.HomeViewModel
+import com.bebaoboy.jetweatherapp.ui.home.HomeState
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
 import com.bebaoboy.jetweatherapp.ui.theme.Purple80
+import com.bebaoboy.jetweatherapp.utils.Util
 
 val COLLAPSED_TOP_BAR_HEIGHT = 100.dp
 val EXPANDED_TOP_BAR_HEIGHT = 200.dp
@@ -36,8 +40,9 @@ val EXPANDED_TOP_BAR_HEIGHT = 200.dp
 fun AppBar(
     modifier: Modifier = Modifier,
     isCollapsed: Boolean,
-    homeViewModel: HomeViewModel? = null
+    homeViewModelState: HomeState? = null
 ) {
+    var isUpdatedDateShown by remember { mutableStateOf(false) }
     val color: Color by animateColorAsState(
         targetValue =
         if (isCollapsed)
@@ -108,7 +113,46 @@ fun AppBar(
                     tint = Color.Black
                 )
             }
-            Text(text = homeViewModel?.homeState?.weather?.currentWeatherModel?.time.orEmpty())
+            if (!isCollapsed) Spacer(modifier = Modifier.weight(1f))
+            
+            AnimatedVisibility(visible = !isCollapsed && homeViewModelState?.weather?.currentWeatherModel?.time != null) {
+                Button(
+//                    colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent),
+                    onClick = {
+                        isUpdatedDateShown = !isUpdatedDateShown
+                    }, modifier = Modifier
+                        .weight(2f)
+                        .align(Alignment.CenterVertically)
+                ) {
+                    if (isUpdatedDateShown) Text(
+//                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        textAlign = androidx.compose.ui.text.style.TextAlign.Center,
+                        text = "Updated: ${
+                            Util.formatNormalDate(
+                                "MMM, dd HH:mm",
+                                
+                                homeViewModelState?.weather?.currentWeatherModel?.time!!,
+                                unix = true
+                            )
+                        }"
+                    )
+                    else
+                        AndroidView(factory = { context ->
+                            TextClock(context).apply {
+                                format12Hour?.let {
+                                    this.format12Hour = "MMMM, dd HH:mm:ss"
+                                }
+                                format24Hour?.let {
+                                    this.format24Hour = "MMMM, dd HH:mm:ss"
+                                }
+                                timeZone?.let { this.timeZone = it }
+//                                textSize.let { this.textSize = 24f }
+                            }
+                        })
+                }
+                
+            }
+            
         }
         
         
@@ -124,7 +168,7 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun ExpandedTopBar(modifier: Modifier = Modifier, homeViewModel: HomeViewModel) {
+fun ExpandedTopBar(modifier: Modifier = Modifier, homeViewModelState: HomeState) {
     Box(
         modifier = modifier
             .background(MaterialTheme.colorScheme.primaryContainer)
@@ -137,6 +181,6 @@ fun ExpandedTopBar(modifier: Modifier = Modifier, homeViewModel: HomeViewModel) 
 //            text = "Library",
 //            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 48.sp),
 //        )
-        HomeScreen(homeViewModel = homeViewModel)
+        HomeScreen(homeViewModelState = homeViewModelState)
     }
 }

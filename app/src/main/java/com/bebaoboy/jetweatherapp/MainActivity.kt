@@ -27,10 +27,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -79,18 +79,22 @@ fun GreetingPreview2() {
 @Composable
 fun ScaffoldLibrary(
     modifier: Modifier = Modifier,
-    listState: LazyListState = rememberLazyListState()
+    listState: LazyListState = rememberLazyListState(),
+    homeViewModel: HomeViewModel = hiltViewModel()
 ) {
-    val isCollapsed: Boolean = remember {
+    val isCollapsed: Boolean by remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
-    }.value
-    val homeViewModel: HomeViewModel = hiltViewModel()
+    }
     
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            AppBar(modifier = modifier, isCollapsed = isCollapsed, homeViewModel = homeViewModel)
+            AppBar(
+                modifier = modifier,
+                isCollapsed = isCollapsed,
+                homeViewModelState = homeViewModel.homeState
+            )
         },
     ) { innerPadding ->
         CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
@@ -105,7 +109,7 @@ fun ScaffoldLibrary(
                     item {
                         ExpandedTopBar(
                             modifier = modifier.height(boxWithConstraintsScope.maxHeight - 100.dp),
-                            homeViewModel = homeViewModel
+                            homeViewModelState = homeViewModel.homeState
                         )
                     }
                     items(count = 50) { i ->
@@ -133,7 +137,7 @@ fun ScaffoldLibrary(
                             },
                             supportingContent = {
                                 Text(
-                                    text = LocalContext.current.getString(R.string.app_name) + i.toString(),
+                                    text = stringResource(R.string.app_name) + i.toString(),
                                     modifier = Modifier
                                         .fillMaxWidth()
                                 )

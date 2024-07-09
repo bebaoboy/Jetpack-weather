@@ -1,6 +1,5 @@
 package com.bebaoboy.jetweatherapp.ui.home
 
-import android.icu.text.DateFormat
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -12,8 +11,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bebaoboy.jetweatherapp.R
@@ -48,7 +47,7 @@ fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: Curre
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = buildString {
-                append(LocalContext.current.getString(R.string.weather_status))
+                append(stringResource(R.string.weather_status))
                 append(": ")
                 append(currentWeatherModel.weatherInfo.info)
             },
@@ -57,7 +56,7 @@ fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: Curre
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = buildString {
-                append(LocalContext.current.getString(R.string.weather_wind_speed))
+                append(stringResource(R.string.weather_wind_speed))
                 append(": ")
                 append(currentWeatherModel.windSpeed)
                 append(" Km/h ")
@@ -77,7 +76,7 @@ private fun CurrentWeatherItemPreview() {
             temperature = 28.3,
             windDirection = "South",
             isDay = true,
-            time = Util.formatNormalDate(DateFormat.ABBR_WEEKDAY, Date().time),
+            time = Date().time,
             weatherInfo = Util.getWeatherInfo(1)
         )
     )
