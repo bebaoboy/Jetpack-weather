@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bebaoboy.jetweatherapp.ui.home.HomeScreen
+import com.bebaoboy.jetweatherapp.ui.home.HomeViewModel
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
 import com.bebaoboy.jetweatherapp.ui.theme.Purple80
 
@@ -34,7 +35,8 @@ val EXPANDED_TOP_BAR_HEIGHT = 200.dp
 @OptIn(ExperimentalMaterial3Api::class)
 fun AppBar(
     modifier: Modifier = Modifier,
-    isCollapsed: Boolean
+    isCollapsed: Boolean,
+    homeViewModel: HomeViewModel? = null
 ) {
     val color: Color by animateColorAsState(
         targetValue =
@@ -106,6 +108,7 @@ fun AppBar(
                     tint = Color.Black
                 )
             }
+            Text(text = homeViewModel?.homeState?.weather?.currentWeatherModel?.time.orEmpty())
         }
         
         
@@ -121,7 +124,7 @@ fun GreetingPreview() {
 }
 
 @Composable
-fun ExpandedTopBar(modifier: Modifier = Modifier) {
+fun ExpandedTopBar(modifier: Modifier = Modifier, homeViewModel: HomeViewModel) {
     Box(
         modifier = modifier
             .background(MaterialTheme.colorScheme.primaryContainer)
@@ -134,6 +137,6 @@ fun ExpandedTopBar(modifier: Modifier = Modifier) {
 //            text = "Library",
 //            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 48.sp),
 //        )
-        HomeScreen()
+        HomeScreen(homeViewModel = homeViewModel)
     }
 }

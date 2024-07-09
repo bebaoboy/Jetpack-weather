@@ -60,7 +60,8 @@ fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: Curre
                 append(LocalContext.current.getString(R.string.weather_wind_speed))
                 append(": ")
                 append(currentWeatherModel.windSpeed)
-                append(" Km/h")
+                append(" Km/h ")
+                append(currentWeatherModel.windDirection)
             },
             style = MaterialTheme.typography.bodyLarge
         )
@@ -74,7 +75,7 @@ private fun CurrentWeatherItemPreview() {
         currentWeatherModel = CurrentWeatherModel(
             windSpeed = 12.0,
             temperature = 28.3,
-            windDirection = "",
+            windDirection = "South",
             isDay = true,
             time = Util.formatNormalDate(DateFormat.ABBR_WEEKDAY, Date().time),
             weatherInfo = Util.getWeatherInfo(1)

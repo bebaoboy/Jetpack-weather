@@ -1,5 +1,6 @@
 package com.bebaoboy.jetweatherapp.ui.home
 
+import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -15,6 +16,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@SuppressLint("LogConditional")
 @HiltViewModel
 class HomeViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository

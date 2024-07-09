@@ -37,6 +37,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.bebaoboy.jetweatherapp.ui.home.HomeViewModel
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -82,12 +84,13 @@ fun ScaffoldLibrary(
     val isCollapsed: Boolean = remember {
         derivedStateOf { listState.firstVisibleItemIndex > 0 }
     }.value
+    val homeViewModel: HomeViewModel = hiltViewModel()
     
     Scaffold(
         modifier = Modifier
             .fillMaxSize(),
         topBar = {
-            AppBar(modifier = modifier, isCollapsed = isCollapsed)
+            AppBar(modifier = modifier, isCollapsed = isCollapsed, homeViewModel = homeViewModel)
         },
     ) { innerPadding ->
         CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
@@ -99,7 +102,12 @@ fun ScaffoldLibrary(
                     state = listState,
                     
                     ) {
-                    item { ExpandedTopBar(modifier = modifier.height(boxWithConstraintsScope.maxHeight - 100.dp)) }
+                    item {
+                        ExpandedTopBar(
+                            modifier = modifier.height(boxWithConstraintsScope.maxHeight - 100.dp),
+                            homeViewModel = homeViewModel
+                        )
+                    }
                     items(count = 50) { i ->
                         ListItem(
                             
