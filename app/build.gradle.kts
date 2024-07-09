@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-//    alias(libs.plugins.google.dagger.hilt.android)
+    alias(libs.plugins.google.dagger.hilt.android)
     id("kotlinx-serialization")
     id("org.jetbrains.kotlin.plugin.compose")
     kotlin("kapt")
@@ -70,13 +70,14 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
-//    implementation(libs.hilt.android)
-//    kapt(libs.hilt.android.compiler)
+    
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.retrofit)
     implementation(libs.retrofit2.kotlinx.serialization.converter)
+    implementation(libs.retrofit2.logging)
     implementation(libs.okhttp)
 }
 

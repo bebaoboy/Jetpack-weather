@@ -1,6 +1,5 @@
 package com.bebaoboy.jetweatherapp.domain.mappers_impl
 
-import android.icu.text.DateFormat
 import com.bebaoboy.jetweatherapp.data.remote.models.ApiHourlyWeatherModel
 import com.bebaoboy.jetweatherapp.domain.mappers.ApiMapper
 import com.bebaoboy.jetweatherapp.domain.models.HourlyWeatherModel
@@ -11,7 +10,7 @@ class ApiHourlyMapper : ApiMapper<HourlyWeatherModel, ApiHourlyWeatherModel> {
         return HourlyWeatherModel(
             time = entity.time.map { time ->
                 Util.formatNormalDate(
-                    DateFormat.HOUR24_MINUTE,
+                    "HH:mm",
                     time,
                     unix = true,
                 )

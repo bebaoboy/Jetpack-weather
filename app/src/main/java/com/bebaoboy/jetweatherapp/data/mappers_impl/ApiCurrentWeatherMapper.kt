@@ -1,6 +1,5 @@
 package com.bebaoboy.jetweatherapp.domain.mappers_impl
 
-import android.icu.text.DateFormat
 import com.bebaoboy.jetweatherapp.data.remote.models.ApiCurrentWeatherModel
 import com.bebaoboy.jetweatherapp.domain.mappers.ApiMapper
 import com.bebaoboy.jetweatherapp.domain.models.CurrentWeatherModel
@@ -14,7 +13,7 @@ class ApiCurrentWeatherMapper : ApiMapper<CurrentWeatherModel, ApiCurrentWeather
             windDirection = Util.getWindDirection(entity.windDirection10m.toDouble()),
             windSpeed = entity.windSpeed10m,
             time = Util.formatNormalDate(
-                DateFormat.ABBR_MONTH_DAY,
+                "MMMM, dd",
                 entity.time.toLong(),
                 unix = true
             ),

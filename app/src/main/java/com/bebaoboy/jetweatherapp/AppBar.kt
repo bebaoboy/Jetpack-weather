@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.bebaoboy.jetweatherapp.ui.home.HomeScreen
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
 import com.bebaoboy.jetweatherapp.ui.theme.Purple80
 
@@ -126,16 +126,14 @@ fun ExpandedTopBar(modifier: Modifier = Modifier) {
         modifier = modifier
             .background(MaterialTheme.colorScheme.primaryContainer)
             .fillMaxWidth()
-            .height(
-                EXPANDED_TOP_BAR_HEIGHT - COLLAPSED_TOP_BAR_HEIGHT
-            
-            ),
+            .fillMaxHeight(),
         contentAlignment = Alignment.BottomStart
     ) {
-        Text(
-            modifier = Modifier.padding(16.dp),
-            text = "Library",
-            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 48.sp),
-        )
+//        Text(
+//            modifier = Modifier.padding(16.dp),
+//            text = "Library",
+//            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 48.sp),
+//        )
+        HomeScreen()
     }
 }

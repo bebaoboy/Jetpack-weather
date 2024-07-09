@@ -2,4 +2,10 @@
     <string name="app_name">Jet Weather App</string>
     <string name="tab_home">Home</string>
     <string name="tab_daily">Daily</string>
+    <string name="weather_status">Weather</string>
+    <string name="weather_wind_speed">Wind Speed</string>
+    <string name="today">Today</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="uv_index">Uv Index</string>
+    <string name="sunset">Sunset</string>
 </resources>

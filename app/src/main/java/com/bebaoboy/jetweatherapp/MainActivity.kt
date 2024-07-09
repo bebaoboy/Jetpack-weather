@@ -9,8 +9,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.LocalOverscrollConfiguration
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
@@ -36,7 +38,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.view.WindowCompat
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -87,46 +91,51 @@ fun ScaffoldLibrary(
         },
     ) { innerPadding ->
         CompositionLocalProvider(LocalOverscrollConfiguration provides null) {
-            LazyColumn(
-                modifier = modifier
-                    .padding(innerPadding),
-                state = listState,
-                
-                ) {
-                item { ExpandedTopBar() }
-                items(count = 50) { i ->
-                    ListItem(
-                        
-                        leadingContent = {
-                            IconButton(onClick = { }) {
-                                Icon(
-                                    imageVector = Icons.Outlined.FavoriteBorder,
-                                    contentDescription = "",
-                                    tint = Color.Black
-                                )
-                            }
-                        },
-                        modifier = Modifier.clickable {
-                            // no way to get headlineContent and supportingContent here
-                        }.padding(vertical = 20.dp),
-                        headlineContent = {
-                            Text(
-                                text = stringResource(id = R.string.tab_home),
-                                style = TextStyle(fontSize = 16.sp)
-                            )
-                        },
-                        supportingContent = {
-                            Text(
-                                text = LocalContext.current.getString(R.string.app_name) + i.toString(),
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                            )
-                        },
-                    )
+            BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+                val boxWithConstraintsScope = this
+                LazyColumn(
+                    modifier = modifier
+                        .padding(innerPadding),
+                    state = listState,
                     
+                    ) {
+                    item { ExpandedTopBar(modifier = modifier.height(boxWithConstraintsScope.maxHeight - 100.dp)) }
+                    items(count = 50) { i ->
+                        ListItem(
+                            
+                            leadingContent = {
+                                IconButton(onClick = { }) {
+                                    Icon(
+                                        imageVector = Icons.Outlined.FavoriteBorder,
+                                        contentDescription = "",
+                                        tint = Color.Black
+                                    )
+                                }
+                            },
+                            modifier = Modifier
+                                .clickable {
+                                    // no way to get headlineContent and supportingContent here
+                                }
+                                .padding(vertical = 20.dp),
+                            headlineContent = {
+                                Text(
+                                    text = stringResource(id = R.string.tab_home),
+                                    style = TextStyle(fontSize = 16.sp)
+                                )
+                            },
+                            supportingContent = {
+                                Text(
+                                    text = LocalContext.current.getString(R.string.app_name) + i.toString(),
+                                    modifier = Modifier
+                                        .fillMaxWidth()
+                                )
+                            },
+                        )
+                        
+                        
+                    }
                     
                 }
-                
             }
         }
     }
