@@ -40,6 +40,8 @@ okhttp = { module = "com.squareup.okhttp3:okhttp", version.ref = "okhttp" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 retrofit2-kotlinx-serialization-converter = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofit2KotlinxSerializationConverter" }
 retrofit2-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+google-location = { module = "com.google.android.gms:play-services-location", version.prefer = "21.1.0" }
+google-permission = { module = "com.google.accompanist:accompanist-permissions", version.prefer = "0.35.0-alpha" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

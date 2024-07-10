@@ -3,6 +3,7 @@ package com.bebaoboy.jetweatherapp
 
 import AppBar
 import ExpandedTopBar
+import android.location.Location
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -50,12 +51,26 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.bebaoboy.jetweatherapp.ui.daily.DailyScreen
 import com.bebaoboy.jetweatherapp.ui.home.HomeViewModel
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import dagger.hilt.android.AndroidEntryPoint
+
+lateinit var fusedLocationClient: FusedLocationProviderClient
+//lateinit var location: Location
+
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+//        fusedLocationClient.lastLocation
+//            .addOnSuccessListener { it: Location? ->
+//                // Got last known location. In some rare situations this can be null.
+//                if (it != null)
+//                location = it;
+//            }
+        
         WindowCompat.setDecorFitsSystemWindows(window, false)
         enableEdgeToEdge(
         

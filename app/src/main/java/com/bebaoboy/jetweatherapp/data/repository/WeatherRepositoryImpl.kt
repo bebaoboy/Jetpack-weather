@@ -16,7 +16,11 @@ class WeatherRepositoryImpl @Inject constructor(
 ) : WeatherRepository {
     override fun getWeather(): Flow<Response<WeatherModel>> = flow {
         emit(Response.Loading())
-        val apiWeather = weatherApiInterface.getWeather()
+        
+        val apiWeather = weatherApiInterface.getWeather(
+//            latitude = location.latitude,
+//            longitude = location.longitude
+        )
         val weather = weatherMapper.mapToDomain(apiWeather)
         emit(Response.Success(weather))
     }.catch {

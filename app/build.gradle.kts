@@ -79,6 +79,8 @@ dependencies {
     implementation(libs.retrofit2.kotlinx.serialization.converter)
     implementation(libs.retrofit2.logging)
     implementation(libs.okhttp)
+    implementation(libs.google.location)
+    implementation(libs.google.permission)
 }
 
 kapt {
