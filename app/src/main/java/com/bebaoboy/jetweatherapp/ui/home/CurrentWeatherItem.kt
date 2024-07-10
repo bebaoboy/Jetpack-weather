@@ -20,7 +20,7 @@ import com.bebaoboy.jetweatherapp.domain.models.CurrentWeatherModel
 import com.bebaoboy.jetweatherapp.utils.Util
 import java.util.Date
 
-const val degreeTxt = "°"
+const val degreeTxt = "°C"
 
 @Composable
 fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: CurrentWeatherModel) {
@@ -40,7 +40,6 @@ fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: Curre
                 append(currentWeatherModel.temperature)
                 append(" ")
                 append(degreeTxt)
-                append(" C")
             },
             style = MaterialTheme.typography.displayMedium
         )
@@ -56,7 +55,7 @@ fun CurrentWeatherItem(modifier: Modifier = Modifier, currentWeatherModel: Curre
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = buildString {
-                append(stringResource(R.string.weather_wind_speed))
+                append(stringResource(R.string.wind_speed))
                 append(": ")
                 append(currentWeatherModel.windSpeed)
                 append(" Km/h ")

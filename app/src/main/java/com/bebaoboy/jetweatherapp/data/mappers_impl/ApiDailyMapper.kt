@@ -26,8 +26,20 @@ class ApiDailyMapper : ApiMapper<DailyWeatherModel, ApiDailyWeatherModel> {
                 )
             },
             windSpeed10mMax = entity.windSpeed10mMax,
-            sunrise = entity.sunrise.map { time -> Util.formatNormalDate("HH:mm", time.toLong()) },
-            sunset = entity.sunset.map { time -> Util.formatNormalDate("HH:mm", time.toLong()) },
+            sunrise = entity.sunrise.map { time ->
+                Util.formatNormalDate(
+                    "HH:mm",
+                    time.toLong(),
+                    unix = true
+                )
+            },
+            sunset = entity.sunset.map { time ->
+                Util.formatNormalDate(
+                    "HH:mm",
+                    time.toLong(),
+                    unix = true
+                )
+            },
             weatherInfo = entity.weatherCode.map { weatherCode ->
                 Util.getWeatherInfo(weatherCode)
             }

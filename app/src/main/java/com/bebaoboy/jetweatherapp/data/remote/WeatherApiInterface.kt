@@ -9,8 +9,8 @@ import retrofit2.http.Query
 interface WeatherApiInterface {
     @GET(K.END_POINT)
     suspend fun getWeather(
-        @Query(ApiParams.LATITUDE) latitude: Double = 52.52,
-        @Query(ApiParams.LONGITUDE) longitude: Double = 13.419998,
+        @Query(ApiParams.LATITUDE) latitude: Double = 10.755846,
+        @Query(ApiParams.LONGITUDE) longitude: Double = 106.707996,
         @Query(ApiParams.DAILY) daily: Array<String> = arrayOf(
             "weather_code",
             "temperature_2m_max",

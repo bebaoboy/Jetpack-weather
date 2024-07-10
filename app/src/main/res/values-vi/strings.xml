@@ -4,9 +4,11 @@
     <string name="tab_home">Trang chủ</string>
     <string name="tab_daily">Hằng ngày</string>
     <string name="weather_status">Thời tiết</string>
-    <string name="weather_wind_speed">Tốc độ gió</string>
+    <string name="wind_speed">Tốc độ gió</string>
     <string name="today">Hôm nay</string>
     <string name="sunrise">Mặt trời mọc</string>
     <string name="uv_index">Chỉ số UV</string>
     <string name="sunset">Mặt trời lặn</string>
+    <string name="update">Cập nhật</string>
+    <string name="temperature_short">Nhiệt độ</string>
 </resources>

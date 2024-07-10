@@ -23,7 +23,7 @@ data class DailyWeatherModel(
                 windSpeed10mMax = windSpeed10mMax[i],
                 sunrise = sunrise[i],
                 sunset = sunset[i],
-                weatherInfoItem = weatherInfo[i],
+                weatherInfo = weatherInfo[i],
                 time = time[i]
             )
         }
@@ -37,6 +37,6 @@ data class DailyWeatherModel(
         val windSpeed10mMax: Double,
         val sunrise: String,
         val sunset: String,
-        val weatherInfoItem: WeatherInfo,
+        val weatherInfo: WeatherInfo,
     )
 }

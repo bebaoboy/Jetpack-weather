@@ -22,9 +22,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.bebaoboy.jetweatherapp.R
 import com.bebaoboy.jetweatherapp.ui.home.HomeScreen
 import com.bebaoboy.jetweatherapp.ui.home.HomeState
 import com.bebaoboy.jetweatherapp.ui.theme.JetWeatherAppTheme
@@ -32,7 +34,7 @@ import com.bebaoboy.jetweatherapp.ui.theme.Purple80
 import com.bebaoboy.jetweatherapp.utils.Util
 
 val COLLAPSED_TOP_BAR_HEIGHT = 100.dp
-val EXPANDED_TOP_BAR_HEIGHT = 200.dp
+//val EXPANDED_TOP_BAR_HEIGHT = 200.dp
 
 
 @Composable
@@ -127,7 +129,7 @@ fun AppBar(
                     if (isUpdatedDateShown) Text(
 //                        color = MaterialTheme.colorScheme.onSurfaceVariant,
                         textAlign = androidx.compose.ui.text.style.TextAlign.Center,
-                        text = "Updated: ${
+                        text = "${stringResource(R.string.update)}: ${
                             Util.formatNormalDate(
                                 "MMM, dd HH:mm",
                                 
@@ -182,5 +184,6 @@ fun ExpandedTopBar(modifier: Modifier = Modifier, homeViewModelState: HomeState)
 //            style = MaterialTheme.typography.headlineLarge.copy(fontSize = 48.sp),
 //        )
         HomeScreen(homeViewModelState = homeViewModelState)
+//        DailyScreen()
     }
 }

@@ -3,8 +3,10 @@ package com.bebaoboy.jetweatherapp.ui.home
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -35,6 +37,7 @@ fun DailyWeatherItem(
                     modifier = Modifier.weight(1f),
                     dailyWeatherModel = dailyWeatherModel
                 )
+                Spacer(modifier = Modifier.width(8.dp))
                 UVIndexItem(
                     modifier = Modifier.weight(1f),
                     dailyWeatherModel = dailyWeatherModel
@@ -49,7 +52,7 @@ fun SunRiseItem(
     modifier: Modifier = Modifier,
     dailyWeatherModel: DailyWeatherModel.DailyWeatherInfo
 ) {
-    Card(modifier = modifier.padding(horizontal = 8.dp)) {
+    Card(modifier = modifier) {
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
@@ -78,7 +81,7 @@ fun UVIndexItem(
     modifier: Modifier = Modifier,
     dailyWeatherModel: DailyWeatherModel.DailyWeatherInfo
 ) {
-    Card(modifier = modifier.padding(horizontal = 8.dp)) {
+    Card(modifier = modifier) {
         Column(
             modifier = Modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.Center,
@@ -94,7 +97,7 @@ fun UVIndexItem(
                 style = MaterialTheme.typography.displayMedium
             )
             Text(
-                text = dailyWeatherModel.weatherInfoItem.info,
+                text = dailyWeatherModel.weatherInfo.info,
                 style = MaterialTheme.typography.headlineSmall
             )
             
@@ -110,7 +113,7 @@ private fun DailyWeatherItemPreview() {
             sunset = "00:00",
             sunrise = "00:00",
             uvIndexMax = 6.75,
-            weatherInfoItem = Util.getWeatherInfo(45),
+            weatherInfo = Util.getWeatherInfo(45),
             time = "00:00",
             temperature2mMax = 0.0,
             temperature2mMin = 0.0,

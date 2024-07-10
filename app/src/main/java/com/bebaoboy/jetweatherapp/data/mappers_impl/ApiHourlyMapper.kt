@@ -10,7 +10,7 @@ class ApiHourlyMapper : ApiMapper<HourlyWeatherModel, ApiHourlyWeatherModel> {
         return HourlyWeatherModel(
             time = entity.time.map { time ->
                 Util.formatNormalDate(
-                    "HH:mm",
+                    "MM/dd HH:mm",
                     time,
                     unix = true,
                 )

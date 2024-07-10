@@ -21,7 +21,7 @@ import javax.inject.Inject
 class HomeViewModel @Inject constructor(
     private val weatherRepository: WeatherRepository
 ) : ViewModel() {
-    var homeState by mutableStateOf(HomeState())
+    var homeState: HomeState by mutableStateOf(HomeState())
         private set
     
     init {
